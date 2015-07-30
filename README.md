@@ -3,7 +3,7 @@ Front-end Scaffold for Use with [Gulp](http://gulpjs.com/)
 
 Includes [CoffeeScript](http://coffeescript.org/), [Browserify](https://github.com/substack/node-browserify) for CommonJS-style module wrapping, [Backbone](http://backbonejs.org/) for structure,
 [Stylus](http://learnboost.github.io/stylus/) for CSS pre-processing, sourcemaps for CSS and CoffeeScript,
-[Handlebars](http://handlebarsjs.com/) for templating, live-reload for automatic page-refreshes during development and Mocha + PhantomJS for unit testing.
+[Handlebars](http://handlebarsjs.com/) for templating, [Jade](http://jade-lang.com/) for markup, live-reload for automatic page-refreshes during development and Mocha + PhantomJS for unit testing.
 
 Project Setup
 -------------
@@ -22,7 +22,7 @@ Development Tasks
 - For development: `gulp dev` then navigate to `http://localhost:3000` (or IP address).
 - For deploy: `gulp build`
 
-This concatinates and minifies all CoffeeScripts and SASS and moves the project into 'dist' for production deploy.
+This concatinates and minifies all CoffeeScript, Stylus, and Jade and moves the project into 'dist' for production deploy.
 
 Bower
 -----
@@ -52,6 +52,7 @@ A Few Notes on Folder Structure
 -------------------------------
 
 - **Assets** like **images**, **audio**, **webfonts**, **etc** are created in `src/assets` and will automatically be moved over to the **public** folder, mirroring the folder structure where they came from.
+- **Markup** is written in Jade in the root of the `source` directory (which will compile to the root of the `public` directory).
 - **Scripts** such as **CoffeeScript** and **JavaScript** are placed here and compiled over to public via **Browserify**.  For those not familiar, Browserify allows for "CommonJS" style modules to be required inside internal files.  Attachments to the global namespace are no longer needed, and dependencies are traced at compile-time. (Example:  `var MyClass = require('./path/to/MyClass')`)  See the Browserify website for more information.
 - **Styles** is where **SASS** files go, and are compiled over to **public** on save.
 - **Vendor** is where are vendor sources go, from both **Bower** (via `bower install {package}` and then `gulp bower`) as well as manually.  When changes are made to this directory, the **GruntFile** `concat` task should be updated to include the newly added files
