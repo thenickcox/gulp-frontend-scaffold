@@ -13,6 +13,9 @@ config    = require "../config.coffee"
 
 gulp.task "watch", ->
 
+  plugins.watch "#{config.sourcePath}/*.jade", ->
+    gulp.start "markup"
+
   plugins.watch "#{config.sourcePath}/#{config.cssDirectory}/**/*.{styl,sass,scss,css}", ->
     gulp.start "stylesheets"
 
@@ -29,5 +32,5 @@ gulp.task "watch", ->
 
   plugins.watch "#{config.publicPath}/**/*"
     .pipe plugins.livereload()
-  
+
   return
